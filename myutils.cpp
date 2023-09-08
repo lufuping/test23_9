@@ -7,15 +7,11 @@ void fun1() {
 A:
 	std::cout << " ";
 	std::cin >> input;
-	if (sum == 0) {
-		std::cout << "你输入的数是:\n";
+	if (sum == 0 && input != 0) {
+		std::cout << "输入0退出:";
 	}
 	while (input)
 	{
-		if (sum == 0) {
-			std::cout << input;
-		}
-
 		// 判断是否为奇数
 		if (input % 2) {
 			iji++;
