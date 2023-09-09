@@ -3,11 +3,10 @@
 #include "myutills.h"
 
 int main() {
-	//fun1();
-	/*int n = 0, char ch;
-	while (ch = getchar() != '\n')n++;    */
-	char str[] = "abab";
-	char* chr = str;
-
+	// ia 用户输入的控制生成随机数的个数
+	int ia = 0;
+	std::cout << "请输入：";
+	std::cin >> ia;
+	fun2(ia);
 	return 0;
 }
