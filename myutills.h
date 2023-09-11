@@ -13,3 +13,6 @@ void fun1();
 变量ia : 要生成的随机数个数
 */
 void fun2(int ia);
+
+// 冒泡排序,arr负责接受用户传入的需要排序的数组，size为数组的长度.
+int* bubbleSort(int* arr,int size);

@@ -31,7 +31,7 @@ A:
 }
 
 void fun2(int ia)
-{	
+{
 	// ib：用来做arr_ia的数组下标
 	int ib = 1;
 	int arr_ia[1000] = { 0 };// arr_ia 用来存储生成的随机数的重复数,下标为随机数的值
@@ -55,4 +55,39 @@ void fun2(int ia)
 			printf("%d\n", ib);
 		}
 	}
+}
+
+int* bubbleSort(int* arr, int size)
+{
+	// 给arr 申请内存空间
+	int* res = (int*)malloc(size * sizeof(int));
+	// 保证申请到内存空间
+	if (!res) {
+		return NULL;
+	}
+	// 复制数组
+	int ic = 0; // 复制数组时的计数器
+	for (ic;ic < size;ic++) {
+		res[ic] = *arr;
+		arr++;
+	}
+	int i = 0; // 做第一次遍历数组的计数器
+	int ia = 0; // 做数组交换的缓存空间
+	int j = size - 1; // 总的要调换的次数
+	for (j;j > 0;j--) {
+		// 进行第一次调换
+		for (i=0;i < size - 1;i++) {
+			// 如果前者大则和后者交换位置
+			if (res[i] > res[i + 1]) {
+				// 把小的先存入缓存
+				ia = res[i + 1];
+				// 实现交换
+				res[i + 1] = res[i];
+				res[i] = ia;
+				size - 1;
+			}
+		}
+	}
+
+	return res;
 }
