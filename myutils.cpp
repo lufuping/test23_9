@@ -31,7 +31,7 @@ A:
 }
 
 void fun2(int ia)
-{	
+{
 	// ib：用来做arr_ia的数组下标
 	int ib = 1;
 	int arr_ia[1000] = { 0 };// arr_ia 用来存储生成的随机数的重复数,下标为随机数的值
@@ -55,4 +55,58 @@ void fun2(int ia)
 			printf("%d\n", ib);
 		}
 	}
+}
+
+int* fastSort(int* arr, int size)
+{
+	// 给新数组申请内存空间
+	int* res = (int*)malloc(size * sizeof(int));
+	if (res) {
+		// 复制数组
+		int ia = 0; // 复制数组时的计数器
+		for (ia = 0;ia < size;ia++) {
+			res[ia] = *arr;
+			arr++;
+		}
+
+		// 开始排序
+		int ij = 0;
+		while (ij < size - 1) {
+			int j = 0; // 基数的缓存空间
+			int ib = 0, ic = size - 1; // 分别作为前指针和后指针
+			j = res[0];
+			int ii = 0; // 迭代计数器
+			while (ii < size - 1) {
+			B:
+				if (j > res[ic]) {
+					res[ib] = res[ic];
+					ib++;
+				}
+				else if (ic == ib) {
+					res[ib] == j;
+				}
+				else if (j < res[ic]) {
+					ic--;
+					goto B;
+				}
+			A:
+				if (j < res[ib]) {
+					res[ic] = res[ib];
+					ic--;
+				}
+				else if (ib == ic) {
+					res[ic] = j;
+				}
+				else if (j > res[ib]) {
+					ib++;
+					goto A;
+				}
+				ii++;
+				size - 1;
+			}
+			ij++;
+			size - 1;
+		}
+	}
+	return res;
 }

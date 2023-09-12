@@ -13,3 +13,6 @@ void fun1();
 变量ia : 要生成的随机数个数
 */
 void fun2(int ia);
+
+// 快速排序
+int* fastSort(int* arr, int size);
