@@ -57,56 +57,51 @@ void fun2(int ia)
 	}
 }
 
-int* fastSort(int* arr, int size)
-{
-	// 给新数组申请内存空间
-	int* res = (int*)malloc(size * sizeof(int));
-	if (res) {
-		// 复制数组
-		int ia = 0; // 复制数组时的计数器
-		for (ia = 0;ia < size;ia++) {
-			res[ia] = *arr;
-			arr++;
-		}
+void swap(int* a, int* b) {
+	int temp = *a;
+	*a = *b;
+	*b = temp;
+}
 
-		// 开始排序
-		int ij = 0;
-		while (ij < size - 1) {
-			int j = 0; // 基数的缓存空间
-			int ib = 0, ic = size - 1; // 分别作为前指针和后指针
-			j = res[0];
-			int ii = 0; // 迭代计数器
-			while (ii < size - 1) {
-			B:
-				if (j > res[ic]) {
-					res[ib] = res[ic];
-					ib++;
-				}
-				else if (ic == ib) {
-					res[ib] == j;
-				}
-				else if (j < res[ic]) {
-					ic--;
-					goto B;
-				}
-			A:
-				if (j < res[ib]) {
-					res[ic] = res[ib];
-					ic--;
-				}
-				else if (ib == ic) {
-					res[ic] = j;
-				}
-				else if (j > res[ib]) {
-					ib++;
-					goto A;
-				}
-				ii++;
-				size - 1;
-			}
-			ij++;
-			size - 1;
+int partition(int arr[], int low, int high) {
+	int pivot = arr[low]; // 选择第一个元素为基准元素
+	int i = low + 1; // 左边指针
+	int j = high; // 右边指针
+
+	while (i <= j) {
+		if (arr[i] <= pivot) {
+			i++;
+		}
+		else if (arr[j] > pivot) {
+			j--;
+		}
+		else {
+			swap(&arr[i], &arr[j]);
+			i++;
+			j--;
 		}
 	}
-	return res;
+
+	swap(&arr[low], &arr[j]);
+	return j;
+}
+
+void quickSort(int arr[], int low, int high) {
+	if (low < high) {
+		// 选择基准元素
+		int pivot = partition(arr, low, high);
+
+		// 递归排序左边子数组
+		quickSort(arr, low, pivot - 1);
+
+		// 递归排序右边子数组
+		quickSort(arr, pivot + 1, high);
+	}
+}
+
+void printArray(int arr[], int size) {
+	for (int i = 0; i < size; i++) {
+		printf("%d ", arr[i]);
+	}
+	printf("\n");
 }

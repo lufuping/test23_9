@@ -15,4 +15,5 @@ void fun1();
 void fun2(int ia);
 
 // ¿ìËÙÅÅĞò
-int* fastSort(int* arr, int size);
+void quickSort(int arr[], int low, int high);
+void printArray(int arr[], int size);
